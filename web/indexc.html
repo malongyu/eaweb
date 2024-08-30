@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="easyc" method="get">
+  <div>
+    <label for='username'>用户名</label>
+    <input id="username" type="text" name="username" placeholder="请输入用户名">
+  </div>
+  <div>
+    <label for='userpass'>用户名</label>
+    <input id="username" type="text" name="username" placeholder="请输入用户名">
+  </div>
+  <div>
+    <label>爱好</label>
+    <input type="checkbox" name="hobby" value="sing"><label>唱</label>
+    <input type="checkbox" name="hobby" value="jump"><label>跳</label>
+    <input type="checkbox" name="hobby" value="rap"><label>RAP</label>
+  </div>
+    <button>提交</button>
+</form>
+<script src="./static/js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+  /*ajax 异步的JavaScript和xml*/
+  $("[name='username']").blur(function (){
+    //获取该输入框的内容
+    var text = $(this).val();
+    //发送ajax请求
+    $.ajax({
+      url: "login",//地址
+      data: {username: text},//传递给服务器的参数
+      success: function (res) {//成功访问到服务器后要执行的代码
+        if (res == 1) {
+          alert("用户名可用");
+        } else {
+          alert("用户名已存在");
+        }
+      },
+      error: function () {//访问服务器失败后要执行的代码
+        alert("网络错误");
+      }
+    })
+  })
+</script>
+</body>
+</html>
